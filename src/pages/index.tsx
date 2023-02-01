@@ -1,6 +1,25 @@
 import Head from 'next/head'
 
-export default function Home() {
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: Rating;
+}
+
+type Rating = {
+  rate: number;
+  count: number;
+}
+
+type Props = {
+  products: Product[]
+}
+export default function Home( { products } : Props) {
+  console.log(products);
   return (
     <>
       <Head>
@@ -10,8 +29,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h2>Hello World</h2>
+        <ol>
+          {products.map( product => {
+            return <li key={product.id}>{product.title}</li>
+          })}
+        </ol>
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context){
+  const products = await fetch('https://fakestoreapi.com/products')
+        .then(res => res.json());
+  return {
+    props: {
+      products
+    }
+  }
 }
