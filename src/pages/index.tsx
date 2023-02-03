@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import { Button } from '@chakra-ui/react'
+import  Header  from '../components/Header'
+import TopBar  from '../components/TopBar'
 
 type Product = {
   id: number;
@@ -7,19 +10,18 @@ type Product = {
   description: string;
   category: string;
   image: string;
-  rating: Rating;
+  rating: {
+    count: number;
+    rate: number;
+  };
 }
 
-type Rating = {
-  rate: number;
-  count: number;
-}
 
 type Props = {
   products: Product[]
 }
+
 export default function Home( { products } : Props) {
-  console.log(products);
   return (
     <>
       <Head>
@@ -29,6 +31,9 @@ export default function Home( { products } : Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <TopBar />
+        <Header />
+        <Button>Hola</Button>
         <ol>
           {products.map( product => {
             return <li key={product.id}>{product.title}</li>
