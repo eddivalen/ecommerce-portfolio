@@ -1,13 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { SearchIcon, InfoIcon, StarIcon  } from '@chakra-ui/icons'
+import {Flex, Box} from '@chakra-ui/react'
+
+import { SearchIcon, InfoIcon, StarIcon, CheckCircleIcon, EmailIcon, PhoneIcon, CalendarIcon } from '@chakra-ui/icons'
 
 export function Header() {
   return (
-    <div>
-      <Image src="/logo.svg" alt="" width="100" height="48" />
+    <Flex w="100%" as="header" justifyContent="space-between" alignItems="center" border="solid 2px" borderColor="gray.100">
+      <Box margin="1rem 0">
+        <Image src="/logo.svg" alt="" width="100" height="48" />
+      </Box>
       <nav>
-        <ul>
+        <Flex as="ul" listStyleType="none" gap="2rem">
           <li><Link href="#">About Us</Link></li>
           <li><Link href="#">Woman</Link></li>
           <li><Link href="#">Men</Link></li>
@@ -15,25 +19,25 @@ export function Header() {
           <li><Link href="#">Accesories</Link></li>
           <li><Link href="#">Blog</Link></li>
           <li><Link href="#">Contact</Link></li>
-        </ul>
+        </Flex>
       </nav>
       <div className="commerce-menu">
-        <ul>
+        <Flex as="ul" listStyleType="none" gap="1.5rem">
           <li>
-            <Link href="#"></Link>
+            <Link href="#"><SearchIcon /></Link>
           </li>
           <li>
-            <Link href="#"></Link>
+            <Link href="#"><InfoIcon /></Link>
           </li>
           <li>
-            <Link href="#"></Link>
+            <Link href="#"><StarIcon /></Link>
           </li>
           <li>
-            <Link href="#"></Link>
+            <Link href="#"><PhoneIcon /></Link>
           </li>
-        </ul>
+        </Flex>
       </div>
-    </div>
+    </Flex>
   );
 }
 export default Header;
