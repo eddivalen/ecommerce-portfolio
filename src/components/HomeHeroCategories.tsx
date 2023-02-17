@@ -11,7 +11,6 @@ type Props = {
   categories: Categories[]
 }
 
-
 export function HomeHeroCategories({categories}: Props){
   return (
     <Grid templateColumns="540px 255px 255px" templateRows="200px 260px"  gap="30px">

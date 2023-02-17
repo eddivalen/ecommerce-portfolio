@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import {Container, Flex, Box} from '@chakra-ui/react'
 import { SearchIcon, InfoIcon, StarIcon, CheckCircleIcon, EmailIcon, PhoneIcon, CalendarIcon } from '@chakra-ui/icons'
@@ -7,8 +6,6 @@ export function TopBar() {
   return (
     <Box bg="black" w="100%" p={2}>
       <Container as={Flex} color="white" justifyContent="space-between" fontSize="xs" size="lg">
-      <Flex bg='black' w='100%' p={2} color='white' justifyContent="space-between" fontSize="xs">
-        
         <Flex gap="1.5rem">
           <Flex as={Link} href="#" alignItems="center" gap="0.5rem"><PhoneIcon /> +38 (050) 12 34 567</Flex>
         
@@ -25,7 +22,6 @@ export function TopBar() {
         
           <Link href="#"><CheckCircleIcon /> </Link>
         </Flex>
-      </Flex>
       </Container>
     </Box>
   );
