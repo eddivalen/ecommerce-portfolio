@@ -2,8 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {Flex, Box, Container} from '@chakra-ui/react'
 
-import { SearchIcon, InfoIcon, StarIcon, CheckCircleIcon, EmailIcon, PhoneIcon, CalendarIcon } from '@chakra-ui/icons'
-
 export function Header() {
   return (
     <Box w="100%" as="header" borderBottom="solid 2px" borderColor="gray.100">
@@ -25,16 +23,16 @@ export function Header() {
         <div className="commerce-menu">
           <Flex as="ul" listStyleType="none" gap="1.5rem">
             <li>
-              <Link href="#"><SearchIcon /></Link>
+              <Link href="#"><Image src="/ico-search.svg" alt="Search Icon" width="24" height="24" /></Link>
             </li>
             <li>
-              <Link href="#"><InfoIcon /></Link>
+              <Link href="#"><Image src="/ico-world.svg" alt="World Icon" width="24" height="24" /></Link>
             </li>
             <li>
-              <Link href="#"><StarIcon /></Link>
+              <Link href="#"><Image src="/ico-user.svg" alt="User Icon" width="24" height="24" /></Link>
             </li>
             <li>
-              <Link href="#"><PhoneIcon /></Link>
+              <Link href="#"><Image src="/ico-cart.svg" alt="Shppping Cart Icon" width="24" height="24" /></Link>
             </li>
           </Flex>
         </div>
