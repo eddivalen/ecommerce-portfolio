@@ -1,17 +1,16 @@
 import { GetServerSidePropsContext } from "next";
 import Head from 'next/head'
-import Image from 'next/image'
 
-import { AspectRatio, Box, Container, Flex, Text } from "@chakra-ui/react";
+import { Box, Container, SimpleGrid } from "@chakra-ui/react";
 
 import Header from '../components/Header'
 import TopBar from '../components/TopBar'
 import { HomeHeroCategories } from '@/components/HomeHeroCategories'
 import { Categories } from '@/models/Categories'
-import { AdvantageItem } from "@/components/AdvantageItem";
 import { AdvantageSection } from "@/components/AdvantageSection";
+import { ProductCard } from "@/components/ProductCard";
 
-type Product = {
+export type Product = {
   id: number;
   title: string;
   price: number;
@@ -31,10 +30,6 @@ type Props = {
 }
 
 
-
-
-
-
 export default function Home({ products, categories }: Props) {
   return (
     <>
@@ -49,18 +44,21 @@ export default function Home({ products, categories }: Props) {
         <Header />
       </Box>
       <main>
-        <Container size="lg">
+        <Container size={{
+          lg: 'lg'
+        }}>
           <HomeHeroCategories categories={categories} />
           <AdvantageSection />
+        {
+          <SimpleGrid minChildWidth="255px" spacing="1.85rem">
+            {products.map(product => {
+              return <ProductCard  key={product.id} {...product} />
+            })}
+          </SimpleGrid>
+        }
         </Container>
-      <Box margin="2rem auto" width="255px" border="solid 1px" borderColor="gray.200">
-        <AspectRatio position="relative" ratio={1} maxW="100%">
-          <Image src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" 
-          alt="" fill={true} style={{objectFit: "contain"}} />
-        </AspectRatio>
-        <Text>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</Text>
-        <Text>$ 109.95</Text>
-      </Box>
+
+        
       </main>
     </>
   )
