@@ -49,14 +49,23 @@ export default function Home({ products, categories }: Props) {
         }}>
           <HomeHeroCategories categories={categories} />
           <AdvantageSection />
-        {
-          <SimpleGrid minChildWidth="255px" spacing="1.85rem">
-            {products.map(product => {
-              return <ProductCard  key={product.id} {...product} />
-            })}
-          </SimpleGrid>
-        }
         </Container>
+          {
+            <SimpleGrid minChildWidth={{
+              lg: '255px'
+            }}
+            gridTemplateColumns="repeat(auto-fit, 255px)"
+            gridAutoFlow="column"
+            gridAutoColumns="255px"
+            overflowX="scroll"
+            scrollSnapType="x mandatory"
+            scrollSnapStop="always"
+            spacing="1.85rem">
+              {products.map(product => {
+                return <Box key={product.id} scrollSnapAlign="center"><ProductCard {...product} /></Box>
+              })}
+            </SimpleGrid>
+          }
 
         
       </main>
